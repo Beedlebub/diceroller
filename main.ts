@@ -9,3 +9,5 @@ input.onGesture(Gesture.Shake, function () {
     led.setBrightness(255)
     basic.showNumber(randint(1, 6))
 })
+basic.clearScreen()
+basic.showNumber(randint(1, 6))
