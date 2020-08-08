@@ -1,13 +1,27 @@
-input.onGesture(Gesture.Shake, function () {
-    music.playMelody("C5 B A G F E D C ", 500)
-    led.setBrightness(64)
-    basic.pause(100)
-    led.setBrightness(128)
-    basic.pause(100)
-    led.setBrightness(64)
-    basic.pause(100)
-    led.setBrightness(255)
-    basic.showNumber(randint(1, 6))
+input.onButtonPressed(Button.A, function () {
+    die_1 = randint(1, 6)
+    music.playTone(440, music.beat(BeatFraction.Quarter))
+    serial.writeLine("" + die_1)
+    die_2 = randint(1, 6)
+    music.playTone(494, music.beat(BeatFraction.Quarter))
+    serial.writeLine("" + die_2)
+    total = die_1 + die_2
+    music.playTone(523, music.beat(BeatFraction.Half))
+    serial.writeLine("" + total)
+    if (total == 7) {
+        serial.writeLine("Seven Thrown!")
+    }
+    if (total == 11) {
+        serial.writeLine("Eleven Thrown!")
+    }
+    if (die_1 == die_2) {
+        serial.writeLine("Doubles Thrown!")
+    }
+    serial.writeLine("")
+    basic.showString("" + die_1 + "+" + ("" + die_2) + "=" + ("" + total))
 })
-basic.clearScreen()
-basic.showNumber(randint(1, 6))
+let total = 0
+let die_2 = 0
+let die_1 = 0
+music.setVolume(64)
+music.playTone(262, music.beat(BeatFraction.Sixteenth))
