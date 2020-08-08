@@ -25,3 +25,6 @@ let die_2 = 0
 let die_1 = 0
 music.setVolume(64)
 music.playTone(262, music.beat(BeatFraction.Sixteenth))
+basic.showIcon(IconNames.Yes)
+basic.pause(200)
+basic.clearScreen()
